@@ -7,11 +7,15 @@ const port = 8080;
 app.use(bodyParser.urlencoded({extended:true}));
 app.use(bodyParser.json());
 
-app.use(express.static(path.join(__dirname)));
+client.connect()
+    .then(() => {
+        app.use(express.static(path.join(__dirname)));
 
-app.get('/', (req, res) => {
-    res.sendFile(path.join(__direname, 'index.html'))
-});
+        app.get('/', (req, res) => {
+            res.sendFile(path.join(__direname, 'index.html'));
+        });
 
-app.use(express.json());
-app.listen(port, () => console.log('server is on'));
+        app.use(express.json());
+
+        app.listen(port, () => console.log('server is on'));
+    })
