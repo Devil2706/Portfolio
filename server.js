@@ -7,4 +7,4 @@ const port = 8080;
 app.use(bodyParser.urlencoded({extended:true}));
 app.use(bodyParser.json());
 
-app.listen(PORT, () => console.log('server is on'));
+app.listen(port, () => console.log('server is on'));
